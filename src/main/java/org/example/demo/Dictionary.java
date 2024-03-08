@@ -1,2 +1,7 @@
-package org.example.demo;public class Dictionary {
+package org.example.demo;
+
+import java.util.ArrayList;
+
+public class Dictionary {
+    public static ArrayList<Word> words = new ArrayList<>();
 }
