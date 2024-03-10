@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.demo.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.DictionaryController">
+    <children>
+        <ImageView fitHeight="31.0" fitWidth="50.0" layoutX="7.0" layoutY="8.0">
+            <image>
+                <Image url="@logo.png" /> <!-- Replace with your logo image file -->
+            </image>
+        </ImageView>
+        <TextField fx:id="keywordTextField" layoutX="7.0" layoutY="52.0" prefHeight="38.0" prefWidth="151.0" promptText="Search word..." text="f" />
+        <Button fx:id="searchButton" layoutX="168.0" layoutY="56.0" mnemonicParsing="false" text="Search" />
+      <TableView fx:id="dictionaryTableView" layoutX="7.0" layoutY="114.0" prefHeight="485.0" prefWidth="200.0">
+         <columns>
+            <TableColumn fx:id="wordList" prefWidth="199.0" />
+         </columns>
+      </TableView>
+    </children>
+</AnchorPane>
