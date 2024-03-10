@@ -1,5 +1,7 @@
-package org.example.demo;
+package com.uet.oop.controller;
 
+import com.uet.oop.data.database.DatabaseConnection;
+import com.uet.oop.model.Word;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -25,15 +27,15 @@ public class DictionaryController implements Initializable{
     private Button searchButton;
 
     @FXML
-    private TableColumn<DictionaryModel, String> wordList;
+    private TableColumn<Word, String> wordList;
 
     @FXML
-    private TableView<DictionaryModel> dictionaryTableView;
+    private TableView<Word> dictionaryTableView;
 
     @FXML
     private TextField keywordTextField;
 
-    ObservableList<DictionaryModel> dictionaryModelObservableList = FXCollections.observableArrayList();
+    ObservableList<Word> dictionaryModelObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resource){
@@ -49,14 +51,14 @@ public class DictionaryController implements Initializable{
             while(queryOutput.next()){
                 String queryTarget = queryOutput.getString("target");
 
-                dictionaryModelObservableList.add(new DictionaryModel(queryTarget));
+                dictionaryModelObservableList.add(new Word(queryTarget, ""));
             }
 
             wordList.setCellValueFactory(new PropertyValueFactory<>("target"));
 
             dictionaryTableView.setItems(dictionaryModelObservableList);
 
-            FilteredList<DictionaryModel> filteredData = new FilteredList<>(dictionaryModelObservableList, b -> true);
+            FilteredList<Word> filteredData = new FilteredList<>(dictionaryModelObservableList, b -> true);
 
             keywordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(dictionaryModel -> {
@@ -67,14 +69,12 @@ public class DictionaryController implements Initializable{
 
                     String searchKeyWord = newValue.toLowerCase();
 
-                    if(dictionaryModel.getTarget().toLowerCase().indexOf(searchKeyWord) > -1){
-                        return true;
-                    } else return false;
+                    return dictionaryModel.getWordTarget().toLowerCase().contains(searchKeyWord);
 
                 });
             });
 
-            SortedList<DictionaryModel> sortedData = new SortedList<>(filteredData);
+            SortedList<Word> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(dictionaryTableView.comparatorProperty());
 
             dictionaryTableView.setItems(sortedData);

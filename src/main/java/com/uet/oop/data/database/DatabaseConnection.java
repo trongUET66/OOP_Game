@@ -1,4 +1,4 @@
-package org.example.demo;
+package com.uet.oop.data.database;
 
 import java.sql.*;
 
