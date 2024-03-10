@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DictionaryController implements Initializable{
+public abstract class DictionaryController implements Initializable{
 
 
     @FXML
@@ -37,8 +37,7 @@ public class DictionaryController implements Initializable{
 
     ObservableList<Word> dictionaryModelObservableList = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resource){
+    public void initialize(){
         DatabaseConnection connectionNow = new DatabaseConnection();
         Connection connectDB = connectionNow.getDBConnection();
 
@@ -69,7 +68,7 @@ public class DictionaryController implements Initializable{
 
                     String searchKeyWord = newValue.toLowerCase();
 
-                    return dictionaryModel.getWordTarget().toLowerCase().contains(searchKeyWord);
+                    return dictionaryModel.getTarget().toLowerCase().contains(searchKeyWord);
 
                 });
             });
@@ -78,6 +77,7 @@ public class DictionaryController implements Initializable{
             sortedData.comparatorProperty().bind(dictionaryTableView.comparatorProperty());
 
             dictionaryTableView.setItems(sortedData);
+            connectionNow.closeConnection(connectDB);
 
         } catch (SQLException e){
             Logger.getLogger(DictionaryController.class.getName()).log(Level.SEVERE, null, e);

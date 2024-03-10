@@ -1,27 +1,42 @@
 package com.uet.oop.model;
 
 public class Word {
-    private String wordTarget;
-    private String wordExplain;
+    private int id;
+    private String target;
+    private String definition;
 
-    public Word(String wordTarget, String wordExplain) {
-        this.wordTarget = wordTarget;
-        this.wordExplain = wordExplain;
+    public Word(String target, String definition) {
+        this.target = target;
+        this.definition = definition;
     }
 
-    public String getWordTarget() {
-        return wordTarget;
+    public Word(int id, String target, String definition) {
+        this.id = id;
+        this.target = target;
+        this.definition = definition;
     }
 
-    public void setWordTarget(String wordTarget) {
-        this.wordTarget = wordTarget;
+    public int getId() {
+        return id;
     }
 
-    public String getWordExplain() {
-        return wordExplain;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setWordExplain(String wordExplain) {
-        this.wordExplain = wordExplain;
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
     }
 }

@@ -1,8 +1,6 @@
-package com.uet.oop.view.commandline;
-
-import com.uet.oop.controller.Dictionary;
-
-
-public class DictionaryCommandLine extends Dictionary {
-
-}
+//package com.uet.oop.view.commandline;
+//
+//
+//public class DictionaryCommandLine extends Dictionary {
+//
+//}
