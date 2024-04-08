@@ -1,26 +1,27 @@
 package com.uet.oop.model;
 
 public class Word {
-    private int id;
+    private long id = 0;
     private String target;
-    private String definition;
+    private String explain;
 
     public Word(String target, String definition) {
+        this.id = 0;
         this.target = target;
-        this.definition = definition;
+        this.explain = definition;
     }
 
-    public Word(int id, String target, String definition) {
+    public Word(long id, String target, String definition) {
         this.id = id;
         this.target = target;
-        this.definition = definition;
+        this.explain = definition;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -32,11 +33,11 @@ public class Word {
         this.target = target;
     }
 
-    public String getDefinition() {
-        return definition;
+    public String getExplain() {
+        return explain;
     }
 
-    public void setDefinition(String definition) {
-        this.definition = definition;
+    public void setExplain(String explain) {
+        this.explain = explain;
     }
 }

@@ -1,16 +1,21 @@
 package com.uet.oop.model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Dictionary extends Word {
-    // Giả sử dic là một đối tượng lưu trữ từ điển
-    public static HashMap<String, String> dic = new HashMap<>();
+public class Dictionary {
 
-    public Dictionary(String target, String definition) {
-        super(target, definition);
+    private ArrayList<Word> dictionary = new ArrayList<>();
+
+    public Dictionary() {
     }
 
-    public Dictionary(int id, String target, String definition) {
-        super(id, target, definition);
+    public List<Word> getDictionary() {
+        return dictionary;
     }
+
+    public void setDictionary(ArrayList<Word> dictionary) {
+        this.dictionary = dictionary;
+    }
+
 }

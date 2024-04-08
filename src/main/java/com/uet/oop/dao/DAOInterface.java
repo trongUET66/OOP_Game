@@ -1,24 +1,22 @@
 package com.uet.oop.dao;
 
-import com.uet.oop.model.Dictionary;
+import com.uet.oop.model.Word;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface DAOInterface<T> {
-    public int insert(T t);
-    public int update(T t);
-    public int delete(T t);
 
-    int insert(Dictionary dictionary);
+    int insert(Word word);
 
-    int update(Dictionary dictionary);
+    int update(Word word);
 
-    int delete(Dictionary dictionary);
+    int delete(Word word);
 
-    public ArrayList<Dictionary> selectAll();
-    public T selectById(T t);
+    List<Word> selectAll();
 
-    Dictionary selectById(Dictionary dictionary);
+    Word findById(int id);
 
-    public ArrayList<Dictionary> selectByCondition(String condition);
+    Word findByTarget(String target);
+
+    List<Word> selectByCondition(String condition);
 }

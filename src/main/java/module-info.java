@@ -1,4 +1,4 @@
-module org.example.demo {
+module com.uet.oop {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;

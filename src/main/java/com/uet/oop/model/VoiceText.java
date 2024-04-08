@@ -29,4 +29,10 @@ public class VoiceText {
 //            System.out.println(voice.getName());
 //        }
     }
+
+    public static void main(String[] args) {
+        VoiceText voiceText = new VoiceText("hello");
+        voiceText.speak();
+    }
+
 }

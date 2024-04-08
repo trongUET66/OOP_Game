@@ -7,16 +7,13 @@ public class DatabaseConnection {
 
     public Connection getDBConnection() {
         String databaseName = "dictionary";
-        String databaseUser = "root";
-        String databasePassword = "Tr717503";
+        String username = "root";
+        String password = "1";
         String url = "jdbc:mysql://localhost/" + databaseName;
 
-
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Class.forName("com.mysql.jdbc.Driver");
-
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+            databaseLink = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,6 +30,15 @@ public class DatabaseConnection {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private static DatabaseConnection connection = null;
+
+    public static DatabaseConnection getInstance() {
+        if (connection == null) {
+            connection = new DatabaseConnection();
+        }
+        return connection;
     }
 
 }

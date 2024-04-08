@@ -11,8 +11,11 @@ public class UiApplication extends Application implements OopGameApplication {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("UET OOP Games");
+
+        Parent root = FXMLLoader.load(getClass().getResource("/com/uet/oop/DictionaryView.fxml"));
+        Scene scene = new Scene(root, 1200, 800);
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }

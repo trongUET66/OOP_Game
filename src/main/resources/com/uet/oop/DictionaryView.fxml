@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uet.oop.controller.DictionaryController">
+
+<!--    <top/>-->
+    <left>
+        <TextField fx:id="keywordTextField" prefHeight="38.0" prefWidth="160.0" promptText="Search word..."
+                   text="Type to search"/>
+
+        <TableView fx:id="dictionaryTableView" layoutY="36.0" prefHeight="564.0" prefWidth="200.0">
+            <columns>
+                <TableColumn fx:id="wordList" prefWidth="199.0"/>
+            </columns>
+        </TableView>
+
+        <ImageView
+            fx:id="imageSearch" fitHeight="32.0" fitWidth="39.0" layoutX="161.0" layoutY="3.0" pickOnBounds="true"
+            preserveRatio="true">
+            <Image url="@search.png"/>
+        </ImageView>
+    </left>
+
+</BorderPane>
