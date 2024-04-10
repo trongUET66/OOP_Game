@@ -1,9 +1,16 @@
 package com.uet.oop.model;
 
-public class Word {
+import java.util.Comparator;
+
+public class Word implements Comparable<Word>{
     private long id = 0;
     private String target;
     private String explain;
+
+    public Word() {
+        target="";
+        explain="";
+    }
 
     public Word(String target, String definition) {
         this.id = 0;
@@ -39,5 +46,9 @@ public class Word {
 
     public void setExplain(String explain) {
         this.explain = explain;
+    }
+
+    public int compareTo(Word otherWord) {
+        return this.getTarget().compareTo(otherWord.getTarget());
     }
 }

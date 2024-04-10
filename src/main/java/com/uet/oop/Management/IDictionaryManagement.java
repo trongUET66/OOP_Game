@@ -1,15 +1,13 @@
-package com.uet.oop.controller;
+package com.uet.oop.Management;
 
 import com.uet.oop.model.Question;
 import com.uet.oop.model.Word;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IDictionaryManagement {
-
-    void insertWord(Word newWord);
-
-    void insertFromFile(String filepath);
+    void insertWord();
 
     void removeWord(String target);
 
@@ -17,14 +15,14 @@ public interface IDictionaryManagement {
 
     List<Word> getAllWord();
 
-    Word lookup(String wordTarget);
+//    Word lookup(String wordTarget);
 
-    List<Word> search(String wordTarget);
+    ArrayList<Word> search(String wordTarget);
 
     List<Question> mixGames();
 
-    void importFromFile(String filepath);
+    void importFromFile();
 
-    void exportToFile(String filepath);
+    void exportToFile();
 
 }

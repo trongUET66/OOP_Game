@@ -1,8 +1,8 @@
 package com.uet.oop.view.commandline;
 
 
-import com.uet.oop.controller.FakeDictionaryManagement;
-import com.uet.oop.controller.IDictionaryManagement;
+import com.uet.oop.Management.FakeDictionaryManagement;
+import com.uet.oop.Management.IDictionaryManagement;
 import com.uet.oop.model.Word;
 
 import java.io.File;
@@ -11,25 +11,32 @@ import java.util.Scanner;
 
 public class DictionaryCommandLine {
 
-    IDictionaryManagement management;
-    private final String filepath = System.getProperty("user.dir")
-            + File.separator + "src"
-            + File.separator + "main"
-            + File.separator + "resources"
-            + File.separator + "dictionary.txt";
+    FakeDictionaryManagement management;
 
-    DictionaryCommandLine(IDictionaryManagement management) {
+    DictionaryCommandLine(FakeDictionaryManagement management) {
         this.management = management;
     }
 
-    private final Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     void runApp() {
+//        this.management.insertFromFile();
+        Scanner userInput = new Scanner(System.in);
+        dictionaryAdvanced();
+        int input = getInput();
         while (true) {
-            dictionaryAdvanced();
-            int input = getInput();
             if (input >= 0 && input <= 9) {
                 handleInput(input);
+            }
+            System.out.print("\n--------------------------------");
+            System.out.print("\nVui lòng nhấn Enter để tiếp tục!\nĐể thoát, hãy ấn ký tự bất kỳ!\n");
+            String userIn = userInput.nextLine();
+            if (userIn.isEmpty()) {
+                dictionaryAdvanced();
+                input = getInput();
+            } else {
+                System.out.print("\nGood Bye!\n");
+                break;
             }
         }
     }
@@ -48,11 +55,11 @@ public class DictionaryCommandLine {
                         "[2] Remove\n" +
                         "[3] Update\n" +
                         "[4] Display\n" +
-                        "[5] Lookup\n" +
-                        "[6] Search\n" +
-                        "[7] Game\n" +
-                        "[8] Import from file\n" +
-                        "[9] Export to file\n" +
+//                        "[5] Lookup\n" +
+                        "[5] Search\n" +
+                        "[6] Game\n" +
+                        "[7] Import from file\n" +
+                        "[8] Export to file\n" +
                         "Your action: "
         );
     }
@@ -87,25 +94,21 @@ public class DictionaryCommandLine {
 
             case 4 -> display();
 
-            case 5 -> lookup();
+//            case 5 -> lookup();
 
-            case 6 -> search();
+            case 5 -> search();
 
-            case 7 -> playGame();
+            case 6 -> playGame();
 
-            case 8 -> importFromFile();
+            case 7 -> importFromFile();
 
-            case 9 -> exportToFile();
+            case 8 -> exportToFile();
         }
     }
 
     private void addWord() {
         clearConsole();
-        System.out.print("Enter target: ");
-        String target = scanner.nextLine();
-        System.out.print("Enter explain: ");
-        String explain = scanner.nextLine();
-        management.insertWord(new Word(target, explain));
+        management.insertWord();
     }
 
     private void removeWord() {
@@ -134,19 +137,19 @@ public class DictionaryCommandLine {
         }
     }
 
-    private void lookup() {
-        clearConsole();
-        System.out.print("Enter target: ");
-        String target = scanner.nextLine();
-        Word word = management.lookup(target);
-        if (word == null) {
-            System.out.println("Target not found!");
-            return;
-        }
-        System.out.println("Found word: ");
-        System.out.println("\tTarget: " + word.getTarget());
-        System.out.println("\tExplain: " + word.getExplain());
-    }
+//    private void lookup() {
+//        clearConsole();
+//        System.out.print("Enter target: ");
+//        String target = scanner.nextLine();
+//        Word word = management.lookup(target);
+//        if (word == null) {
+//            System.out.println("Target not found!");
+//            return;
+//        }
+//        System.out.println("Found word: ");
+//        System.out.println("\tTarget: " + word.getTarget());
+//        System.out.println("\tExplain: " + word.getExplain());
+//    }
 
     private void search() {
         clearConsole();
@@ -165,11 +168,11 @@ public class DictionaryCommandLine {
     }
 
     private void importFromFile() {
-        management.importFromFile(filepath);
+        management.importFromFile();
     }
 
     private void exportToFile() {
-        management.exportToFile(filepath);
+        management.exportToFile();
     }
 
 }

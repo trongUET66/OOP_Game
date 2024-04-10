@@ -5,17 +5,13 @@ import java.util.List;
 
 public class Dictionary {
 
-    private ArrayList<Word> dictionary = new ArrayList<>();
+    public static ArrayList<Word> dictionary = new ArrayList<>();
 
-    public Dictionary() {
-    }
-
-    public List<Word> getDictionary() {
+    public ArrayList<Word> getDictionary() {
         return dictionary;
     }
 
     public void setDictionary(ArrayList<Word> dictionary) {
-        this.dictionary = dictionary;
+        Dictionary.dictionary = dictionary;
     }
-
 }
