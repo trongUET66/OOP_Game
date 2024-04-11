@@ -55,11 +55,11 @@ public class DictionaryCommandLine {
                         "[2] Remove\n" +
                         "[3] Update\n" +
                         "[4] Display\n" +
-//                        "[5] Lookup\n" +
-                        "[5] Search\n" +
-                        "[6] Game\n" +
-                        "[7] Import from file\n" +
-                        "[8] Export to file\n" +
+                        "[5] Lookup\n" +
+                        "[6] Search\n" +
+                        "[7] Game\n" +
+                        "[8] Import from file\n" +
+                        "[9] Export to file\n" +
                         "Your action: "
         );
     }
@@ -94,15 +94,15 @@ public class DictionaryCommandLine {
 
             case 4 -> display();
 
-//            case 5 -> lookup();
+            case 5 -> lookup();
 
-            case 5 -> search();
+            case 6 -> search();
 
-            case 6 -> playGame();
+            case 7 -> playGame();
 
-            case 7 -> importFromFile();
+            case 8 -> importFromFile();
 
-            case 8 -> exportToFile();
+            case 9 -> exportToFile();
         }
     }
 
@@ -137,19 +137,19 @@ public class DictionaryCommandLine {
         }
     }
 
-//    private void lookup() {
-//        clearConsole();
-//        System.out.print("Enter target: ");
-//        String target = scanner.nextLine();
-//        Word word = management.lookup(target);
-//        if (word == null) {
-//            System.out.println("Target not found!");
-//            return;
-//        }
-//        System.out.println("Found word: ");
-//        System.out.println("\tTarget: " + word.getTarget());
-//        System.out.println("\tExplain: " + word.getExplain());
-//    }
+    private void lookup() {
+        clearConsole();
+        System.out.print("Enter target: ");
+        String target = scanner.nextLine();
+        Word word = management.lookup(target);
+        if (word == null) {
+            System.out.println("Target not found!");
+            return;
+        }
+        System.out.println("Found word: ");
+        System.out.println("\tTarget: " + word.getTarget());
+        System.out.println("\tExplain: " + word.getExplain());
+    }
 
     private void search() {
         clearConsole();

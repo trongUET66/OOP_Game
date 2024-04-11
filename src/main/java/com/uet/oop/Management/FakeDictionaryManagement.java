@@ -21,9 +21,20 @@ public class FakeDictionaryManagement implements IDictionaryManagement {
     public void insertWord() {
         Scanner getStringInput = new Scanner(System.in);
         Scanner getIntegerInput = new Scanner(System.in);
-        System.out.print("Enter the number of words: ");
-        int size = getIntegerInput.nextInt();
         int i = 0;
+        int size = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.print("Enter the number of words: ");
+                size = getIntegerInput.nextInt();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Invalid input! Please enter a valid number.");
+                getIntegerInput.nextLine();
+            }
+        }
         while (i < size) {
             System.out.print("Enter Target: ");
             String target = getStringInput.nextLine();
@@ -79,10 +90,18 @@ public class FakeDictionaryManagement implements IDictionaryManagement {
         return dictionary;
     }
 
-//    @Override
-//    public Word lookup(String wordTarget) {
-//        return null;
-//    }
+    @Override
+    public Word lookup(String wordTarget) {
+        Word result;
+        wordTarget = wordTarget.toLowerCase();
+        for (Word word : dictionary) {
+            if (word.getTarget().toLowerCase().equals(wordTarget)) {
+                result = word;
+                return result;
+            }
+        }
+        return null;
+    }
 
     @Override
     public ArrayList<Word> search(String wordTarget) {

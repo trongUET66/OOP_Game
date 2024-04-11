@@ -15,7 +15,7 @@ public interface IDictionaryManagement {
 
     List<Word> getAllWord();
 
-//    Word lookup(String wordTarget);
+    Word lookup(String wordTarget);
 
     ArrayList<Word> search(String wordTarget);
 
