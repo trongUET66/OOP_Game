@@ -29,12 +29,13 @@ public class DictionaryCommandLine {
                 handleInput(input);
             }
             System.out.print("\n--------------------------------");
-            System.out.print("\nVui lòng nhấn Enter để tiếp tục!\nĐể thoát, hãy ấn ký tự bất kỳ!\n");
+            System.out.print("\nVui lòng nhấn \"Enter\" để tiếp tục!\nĐể thoát, hãy ấn \"Exit\" ký tự bất kỳ!\n");
             String userIn = userInput.nextLine();
-            if (userIn.isEmpty()) {
+            if (!userIn.equals("Exit")) {
                 dictionaryAdvanced();
                 input = getInput();
-            } else {
+            }
+            else {
                 System.out.print("\nGood Bye!\n");
                 break;
             }
@@ -164,7 +165,8 @@ public class DictionaryCommandLine {
     }
 
     private void playGame() {
-
+        clearConsole();
+        management.mixGames();
     }
 
     private void importFromFile() {

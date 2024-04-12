@@ -1,5 +1,6 @@
 package com.uet.oop.Management;
 
+import com.uet.oop.Game.Quizlet;
 import com.uet.oop.model.Question;
 import com.uet.oop.model.Word;
 import com.uet.oop.model.Dictionary;
@@ -116,8 +117,32 @@ public class FakeDictionaryManagement implements IDictionaryManagement {
     }
 
     @Override
-    public List<Question> mixGames() {
-        return null;
+    public void mixGames() {
+        int input = -1;
+        Scanner inAction = new Scanner(System.in);
+        System.out.println("[1]: Quizlet");
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                System.out.print("Your action: ");
+                input = inAction.nextInt();
+                if (input >= 1 & input <= 4)
+                    validInput = true;
+                else System.out.println("Invalid action! Please enter a valid number from 1 to 4.");
+            } catch (Exception e) {
+                System.out.println("Invalid action! Please enter a valid number from 1 to 4.");
+            }
+        }
+        switch (input) {
+            case 1: {
+                System.out.println("Welcome to the Dictionary Quiz!");
+                Quizlet game = new Quizlet();
+                game.runGame();
+            }
+            default: {
+
+            }
+        }
     }
 
     @Override

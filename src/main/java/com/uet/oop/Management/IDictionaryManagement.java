@@ -19,7 +19,7 @@ public interface IDictionaryManagement {
 
     ArrayList<Word> search(String wordTarget);
 
-    List<Question> mixGames();
+    void mixGames();
 
     void importFromFile();
 
